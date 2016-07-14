@@ -9,6 +9,12 @@ class PizzaShop < Sinatra::Base
 		@all_pizzas.to_json
 	end
 
+	# Get Route
+	get '/pizzas/:id' do
+		@found_pizza = Pizza.find(params[:id])
+		@found_pizza.to_json
+	end
+
 	# Create Route
 	post '/pizzas' do
 		request.body.rewind
