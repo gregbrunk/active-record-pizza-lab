@@ -14,4 +14,10 @@ class PizzaShop < Sinatra::Base
         parsed_pizza = JSON.parse(new_pizza)
 		Pizza.create(parsed_pizza)
 	end
+
+	delete '/pizzas/:id' do
+		@deleted_pizza = Pizza.find(params[:id])
+		@deleted_pizza.destroy
+		redirect('/pizzas')
+	end
 end
